@@ -1,11 +1,25 @@
-import { createElement } from './createElement';
-import { Abc, RuAbc, RuABC } from './state';
-import { monic } from './monic';
+import { createElement } from '../../js/createElement';
+import {
+  ABC, Abc, RuAbc, RuABC,
+} from './state';
+import textValue from './textValue';
+// import { monic } from './monic';
 
-let language = Abc;
 const { body } = document;
+let language = Abc;
 
 export const virtualKeyboard = () => {
+  const currentLanguage = localStorage.getItem('language') || 'en';
+  const currentCase = localStorage.getItem('case');
+
+  if (currentLanguage === 'en') {
+    language = (currentCase === 'lowerCase' || currentCase === null ? Abc : ABC);
+  }
+
+  if (currentLanguage === 'ru') {
+    language = (currentCase === 'lowerCase' || currentCase === null ? RuAbc : RuABC);
+  }
+
   const keyBoard = createElement({
     element: 'div',
     className: 'keyboard',
@@ -18,7 +32,6 @@ export const virtualKeyboard = () => {
     type Assa = {
       value:string, className: string, data: string,
     };
-
     language[i].forEach(({ value, className, data }: Assa) => {
       const button = createElement({
         element: 'div',
@@ -31,43 +44,64 @@ export const virtualKeyboard = () => {
     keyBoard.append(keysRow);
   }
   body.append(keyBoard);
+  const capsLock = document.querySelector('.caps_lock');
+  if (currentCase === 'upperCase') capsLock?.classList.toggle('active');
+  // textValue();
 };
-const capsLock = document.querySelector('.caps_lock');
-body.addEventListener('keydown', (e) => {
-  console.log(e.code);
-  if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-    language = RuABC;
-  }
-  if (e.code === 'CapsLock') {
-    language = RuABC;
-    capsLock?.classList.toggle('active');
-  }
-  body.innerHTML = '';
-  monic();
-  virtualKeyboard();
-});
-body.addEventListener('keyup', (e) => {
-  if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-    language = RuAbc;
-  }
-  body.innerHTML = '';
-  monic();
-  virtualKeyboard();
-});
-const text: string[] = [];
-let output = '';
-const outputTextarea = (t:string[]) => t.filter((e) => e.length === 1).join('');
-body.addEventListener('keyup', (e) => {
-  text.push(e.key);
-  const textArea = document.querySelector('.text');
-  output = outputTextarea(text);
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  textArea.innerHTML = output;
-  // console.log(e.key);
-  // if (textArea) {
-  // }
-});
+
+// body.addEventListener('keydown', (e) => {
+//   const currentCase = localStorage.getItem('case');
+//   const currentLanguage = localStorage.getItem('language') || 'en';
+//   console.log(e.code);
+//   if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+//     const togleLang = currentLanguage === 'en' ? 'ru' : 'en';
+//     body.addEventListener('keydown', (ev) => {
+//       if (ev.code === 'AltLeft' || ev.code === 'AltRight') {
+//         localStorage.setItem('language', togleLang);
+//         body.childNodes[2].remove();
+//         virtualKeyboard();
+//       }
+//       ev.preventDefault();
+//     });
+//   }
+
+//   if (e.code === 'CapsLock') {
+//     const togleCase = currentCase === 'lowerCase'
+// || currentCase === null ? 'upperCase' : 'lowerCase';
+//     localStorage.setItem('case', togleCase);
+//     body.childNodes[2].remove();
+//     virtualKeyboard();
+//     e.preventDefault();
+//   }
+// });
+// const text: string[] = [];
+// let output = '';
+// const outputTextarea = (t:string[]) => t.filter((e) => e.length === 1).join('');
+// body.addEventListener('keydown', (e) => {
+//   text.push(e.key);
+//   if (e.code === 'Backspace') {
+//     text.pop();
+//   }
+//   if (e.code === 'Enter') {
+//     text.push('/n');
+//   }
+//   const textArea = document.querySelector('.text');
+//   output = outputTextarea(text);
+//   textArea!.innerHTML = output;
+// });
+// body.addEventListener('keydown', (e) => {
+// const currentLanguage = localStorage.getItem('language') || 'en';
+// if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+//   const togleLang = currentLanguage === 'en' ? 'ru' : 'en';
+//   body.addEventListener('keydown', (ev) => {
+//     if (ev.code === 'AltLeft' || ev.code === 'AltRight') {
+//       localStorage.setItem('language', togleLang);
+//     }
+//     body.childNodes[2].remove();
+//     virtualKeyboard();
+//   });
+// }
+// });
 
 // console.log(capsLock);
 // capsLock?.addEventListener('click', () => {

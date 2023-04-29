@@ -707,6 +707,9 @@ export const ABC = [
       value: ']', className: '', data: '221', location: '',
     },
     {
+      value: '/', className: '', data: '191', location: '',
+    },
+    {
       value: 'Del', className: 'del', data: '46', location: '3',
     },
   ],
@@ -754,6 +757,9 @@ export const ABC = [
   [
     {
       value: 'Shift', className: 'shift', data: '16', location: '1',
+    },
+    {
+      value: '\\', className: '', data: '220', location: '',
     },
     {
       value: 'Z', className: '', data: '90', location: '',

@@ -457,13 +457,13 @@ html {
 }
 .button:active {
   background-color: rgba(45, 108, 47, 0.696);
-  border-radius: 25px;
+  border-radius: 7px;
   transition: 0.2s;
 }
 
 .active {
   background-color: rgba(45, 108, 47, 0.696);
-  border-radius: 25px;
+  border-radius: 7px;
   transition: 0.2s;
 }
 
@@ -498,7 +498,7 @@ html {
 .button.alt:hover,
 .button.del:hover,
 .button.shiftR:hover {
-  background-color: rgba(111, 173, 125, 0.564);
+  background-color: rgba(14, 83, 51, 0.81);
 }
 .button.backspace:active,
 .button.caps_lock:active,
@@ -514,13 +514,13 @@ html {
 .button.alt:active,
 .button.del:active,
 .button.shiftR:active {
-  background-color: rgba(45, 108, 47, 0.696);
-  border-radius: 25px;
+  background-color: rgba(14, 83, 51, 0.81);
+  border-radius: 7px;
 }
 
 .button.caps_lock.active {
-  background-color: rgba(45, 108, 47, 0.696);
-  border-radius: 25px;
+  background-color: rgba(14, 83, 51, 0.81);
+  border-radius: 7px;
 }
 
 .button.shiftR {
