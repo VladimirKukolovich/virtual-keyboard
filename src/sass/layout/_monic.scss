@@ -1,0 +1,30 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+html {
+  background-color: #d4ca8391;
+}
+.wrapper {
+  height: 370px;
+  margin: 30px auto 0;
+  // border-color: #222;
+  width: 680px;
+  border: solid $mid-grey 2px;
+}
+.textarea {
+    outline: none;
+    box-sizing: border-box;
+    resize: none;
+    font-family: Inconsolata, monospace;
+    padding: 18px;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: auto;
+    background-color:rgb(235, 251, 229);
+    color: #222; 
+    height: 100%;
+}
+.description {
+  font-size: medium;
+  margin: 10px auto auto 10px;
+}
