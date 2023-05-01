@@ -424,6 +424,11 @@ html {
   height: 100%;
 }
 
+.description {
+  font-size: medium;
+  margin: 10px auto auto 10px;
+}
+
 .keyboard {
   padding: 10px 0 5px 15px;
   box-sizing: border-box;

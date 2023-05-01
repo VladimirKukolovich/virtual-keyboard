@@ -1,5 +1,4 @@
 import { createElement } from '../../js/createElement';
-import { virtualKeyboard } from './virtualKeyboard';
 
 const { body } = document;
 
@@ -19,4 +18,12 @@ export const monic = () => {
   body.append(wrapper);
   wrapper.append(textarea);
   textarea.append(text);
+};
+export const desc = () => {
+  const description = createElement({
+    element: 'span',
+    className: 'description',
+  });
+  body.append(description);
+  description.innerHTML = 'language: Shift + Alt';
 };

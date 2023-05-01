@@ -97,7 +97,7 @@ body.addEventListener('keydown', (e) => {
       const togleLang = currentLanguage === 'en' ? 'ru' : 'en';
       if (event.code === 'AltLeft' || event.code === 'AltRight') {
         localStorage.setItem('language', togleLang);
-        body.childNodes[2].remove();
+        body.childNodes[3]?.remove();
         virtualKeyboard();
       }
     });
@@ -107,7 +107,7 @@ body.addEventListener('keydown', (e) => {
     const currentCase = localStorage.getItem('case') || 'lowerCase';
     const togleCase = currentCase === 'lowerCase' ? 'upperCase' : 'lowerCase';
     localStorage.setItem('case', togleCase);
-    body.childNodes[2].remove();
+    body.childNodes[3]?.remove();
     virtualKeyboard();
   }
 });
@@ -115,12 +115,11 @@ body.addEventListener('keydown', (e) => {
 body.addEventListener('click', (e: MouseEvent) => {
   const code = (e.target as HTMLElement);
   if (code.classList[0] === 'button') {
-    console.log(code.innerHTML);
     if (code.innerHTML === 'Caps Lock') {
       const currentCase = localStorage.getItem('case') || 'lowerCase';
       const togleCase = currentCase === 'lowerCase' ? 'upperCase' : 'lowerCase';
       localStorage.setItem('case', togleCase);
-      body.childNodes[2].remove();
+      body.childNodes[3]?.remove();
       virtualKeyboard();
     }
     const textArea = document.querySelector('.text');
