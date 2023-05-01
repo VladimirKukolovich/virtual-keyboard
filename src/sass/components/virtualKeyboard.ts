@@ -54,7 +54,7 @@ body.addEventListener('keydown', (e) => {
     textArea!.innerHTML = output;
   };
   const brText = () => {
-    if (text.length === 106 || (text.length - 106) % 110 === 0) {
+    if (text.length === 96 || (text.length - 96) % 100 === 0) {
       text.push('<br>');
       output = outputTextarea(text);
       newText();
