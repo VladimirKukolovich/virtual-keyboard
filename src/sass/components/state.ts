@@ -624,43 +624,43 @@ export const Abc = [
 export const ABC = [
   [
     {
-      value: '`', className: '', data: '192', location: '',
+      value: '`', className: '`', data: '192', location: '',
     },
     {
-      value: '1', className: '', data: '49', location: '',
+      value: '1', className: '1', data: '49', location: '',
     },
     {
-      value: '2', className: '', data: '50', location: '',
+      value: '2', className: '2', data: '50', location: '',
     },
     {
-      value: '3', className: '', data: '51', location: '',
+      value: '3', className: '3', data: '51', location: '',
     },
     {
-      value: '4', className: '', data: '52', location: '',
+      value: '4', className: '4', data: '52', location: '',
     },
     {
-      value: '5', className: '', data: '53', location: '',
+      value: '5', className: '5', data: '53', location: '',
     },
     {
-      value: '6', className: '', data: '54', location: '',
+      value: '6', className: '6', data: '54', location: '',
     },
     {
-      value: '7', className: '', data: '55', location: '',
+      value: '7', className: '7', data: '55', location: '',
     },
     {
-      value: '8', className: '', data: '56', location: '',
+      value: '8', className: '8', data: '56', location: '',
     },
     {
-      value: '9', className: '', data: '57', location: '',
+      value: '9', className: '9', data: '57', location: '',
     },
     {
-      value: '0', className: '', data: '48', location: '',
+      value: '0', className: '0', data: '48', location: '',
     },
     {
-      value: '-', className: '', data: '109', location: '3',
+      value: '-', className: 'WW', data: '109', location: '3',
     },
     {
-      value: '=', className: '', data: '61', location: '',
+      value: '=', className: 'EE', data: '61', location: '',
     },
     {
       value: 'Backspace', className: 'backspace', data: '8', location: '',
@@ -671,43 +671,43 @@ export const ABC = [
       value: 'Tab', className: 'tab', data: '9', location: '',
     },
     {
-      value: 'Q', className: '', data: '81', location: '',
+      value: 'Q', className: 'Q', data: '81', location: '',
     },
     {
-      value: 'W', className: '', data: '87', location: '',
+      value: 'W', className: 'W', data: '87', location: '',
     },
     {
-      value: 'E', className: '', data: '69', location: '',
+      value: 'E', className: 'E', data: '69', location: '',
     },
     {
-      value: 'R', className: '', data: '82', location: '',
+      value: 'R', className: 'R', data: '82', location: '',
     },
     {
-      value: 'T', className: '', data: '84', location: '',
+      value: 'T', className: 'T', data: '84', location: '',
     },
     {
-      value: 'Y', className: '', data: '89', location: '',
+      value: 'Y', className: 'Y', data: '89', location: '',
     },
     {
-      value: 'U', className: '', data: '85', location: '',
+      value: 'U', className: 'U', data: '85', location: '',
     },
     {
-      value: 'I', className: '', data: '73', location: '',
+      value: 'I', className: 'I', data: '73', location: '',
     },
     {
-      value: 'O', className: '', data: '79', location: '',
+      value: 'O', className: 'o', data: '79', location: '',
     },
     {
-      value: 'P', className: '', data: '80', location: '',
+      value: 'P', className: 'P', data: '80', location: '',
     },
     {
-      value: '[', className: '', data: '160', location: '',
+      value: '[', className: 'YY', data: '160', location: '',
     },
     {
-      value: ']', className: '', data: '221', location: '',
+      value: ']', className: 'UU', data: '221', location: '',
     },
     {
-      value: '/', className: '', data: '191', location: '',
+      value: '/', className: 'HH', data: '191', location: '',
     },
     {
       value: 'Del', className: 'del', data: '46', location: '3',
@@ -718,37 +718,37 @@ export const ABC = [
       value: 'Caps Lock', className: 'caps_lock', data: '20', location: '',
     },
     {
-      value: 'A', className: '', data: '65', location: '',
+      value: 'A', className: 'A', data: '65', location: '',
     },
     {
-      value: 'S', className: '', data: '83', location: '',
+      value: 'S', className: 'S', data: '83', location: '',
     },
     {
-      value: 'D', className: '', data: '68', location: '',
+      value: 'D', className: 'D', data: '68', location: '',
     },
     {
-      value: 'F', className: '', data: '70', location: '',
+      value: 'F', className: 'F', data: '70', location: '',
     },
     {
-      value: 'G', className: '', data: '71', location: '',
+      value: 'G', className: 'G', data: '71', location: '',
     },
     {
-      value: 'H', className: '', data: '72', location: '',
+      value: 'H', className: 'H', data: '72', location: '',
     },
     {
-      value: 'J', className: '', data: '74', location: '',
+      value: 'J', className: 'J', data: '74', location: '',
     },
     {
-      value: 'K', className: '', data: '75', location: '',
+      value: 'K', className: 'K', data: '75', location: '',
     },
     {
-      value: 'L', className: '', data: '76', location: '',
+      value: 'L', className: 'L', data: '76', location: '',
     },
     {
-      value: ';', className: '', data: '59', location: '',
+      value: ';', className: 'XD', data: '59', location: '',
     },
     {
-      value: "'", className: '', data: '222', location: '',
+      value: "'", className: 'ZZ', data: '222', location: '',
     },
     {
       value: 'Enter', className: 'enter', data: '13', location: '',
@@ -759,37 +759,37 @@ export const ABC = [
       value: 'Shift', className: 'shift', data: '16', location: '1',
     },
     {
-      value: '\\', className: '', data: '220', location: '',
+      value: '\\', className: 'BB', data: '220', location: '',
     },
     {
-      value: 'Z', className: '', data: '90', location: '',
+      value: 'Z', className: 'Z', data: '90', location: '',
     },
     {
-      value: 'X', className: '', data: '88', location: '',
+      value: 'X', className: 'X', data: '88', location: '',
     },
     {
-      value: 'C', className: '', data: '67', location: '',
+      value: 'C', className: 'C', data: '67', location: '',
     },
     {
-      value: 'V', className: '', data: '86', location: '',
+      value: 'V', className: 'V', data: '86', location: '',
     },
     {
-      value: 'B', className: '', data: '66', location: '',
+      value: 'B', className: 'B', data: '66', location: '',
     },
     {
-      value: 'N', className: '', data: '78', location: '',
+      value: 'N', className: 'N', data: '78', location: '',
     },
     {
-      value: 'M', className: '', data: '77', location: '',
+      value: 'M', className: 'M', data: '77', location: '',
     },
     {
-      value: ',', className: '', data: '108', location: '',
+      value: ',', className: 'NN', data: '108', location: '',
     },
     {
-      value: '.', className: '', data: '190', location: '',
+      value: '.', className: 'MM', data: '190', location: '',
     },
     {
-      value: '/', className: '', data: '191', location: '',
+      value: '/', className: 'LL', data: '191', location: '',
     },
     {
       value: '↑', className: 'page_up', data: '38', location: '',
