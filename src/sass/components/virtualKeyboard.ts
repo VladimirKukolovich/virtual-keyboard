@@ -93,21 +93,23 @@ body.addEventListener('keydown', (e) => {
   }
   const currentLanguage = localStorage.getItem('language') || 'en';
   if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-    body.addEventListener('keyup', (event) => {
+    body.addEventListener('keydown', (event) => {
       const togleLang = currentLanguage === 'en' ? 'ru' : 'en';
       if (event.code === 'AltLeft' || event.code === 'AltRight') {
+        const oldKeyBoard = document.querySelector('.keyboard');
         localStorage.setItem('language', togleLang);
-        body.childNodes[3]?.remove();
+        oldKeyBoard?.remove();
         virtualKeyboard();
       }
     });
   }
 
   if (e.code === 'CapsLock') {
+    const oldKeyBoard = document.querySelector('.keyboard');
     const currentCase = localStorage.getItem('case') || 'lowerCase';
     const togleCase = currentCase === 'lowerCase' ? 'upperCase' : 'lowerCase';
     localStorage.setItem('case', togleCase);
-    body.childNodes[3]?.remove();
+    oldKeyBoard?.remove();
     virtualKeyboard();
   }
 });
@@ -115,11 +117,13 @@ body.addEventListener('keydown', (e) => {
 body.addEventListener('click', (e: MouseEvent) => {
   const code = (e.target as HTMLElement);
   if (code.classList[0] === 'button') {
+    const oldKeyBoard = document.querySelector('.keyboard');
+
     if (code.innerHTML === 'Caps Lock') {
       const currentCase = localStorage.getItem('case') || 'lowerCase';
       const togleCase = currentCase === 'lowerCase' ? 'upperCase' : 'lowerCase';
       localStorage.setItem('case', togleCase);
-      body.childNodes[3]?.remove();
+      oldKeyBoard?.remove();
       virtualKeyboard();
     }
     const textArea = document.querySelector('.text');
