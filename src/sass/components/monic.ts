@@ -1,5 +1,4 @@
 import { createElement } from '../../js/createElement';
-import textValue from './textValue';
 import { virtualKeyboard } from './virtualKeyboard';
 
 const { body } = document;
@@ -10,32 +9,14 @@ export const monic = () => {
     className: 'wrapper',
   });
   const textarea = createElement({
-    element: 'textarea',
+    element: 'div',
+    className: 'textarea',
+  });
+  const text = createElement({
+    element: 'span',
     className: 'text',
-    value: '',
   });
   body.append(wrapper);
   wrapper.append(textarea);
+  textarea.append(text);
 };
-
-body.addEventListener('keydown', (e) => {
-  const currentCase = localStorage.getItem('case');
-  const currentLanguage = localStorage.getItem('language') || 'en';
-  if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-    const togleLang = currentLanguage === 'en' ? 'ru' : 'en';
-    body.addEventListener('keyup', (ev) => {
-      if (ev.code === 'AltLeft' || ev.code === 'AltRight') {
-        localStorage.setItem('language', togleLang);
-        body.childNodes[2].remove();
-        virtualKeyboard();
-      }
-    });
-  }
-
-  if (e.code === 'CapsLock') {
-    const togleCase = currentCase === 'lowerCase' || currentCase === null ? 'upperCase' : 'lowerCase';
-    localStorage.setItem('case', togleCase);
-    body.childNodes[2].remove();
-    virtualKeyboard();
-  }
-});

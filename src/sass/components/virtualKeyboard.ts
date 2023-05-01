@@ -2,20 +2,19 @@ import { createElement } from '../../js/createElement';
 import {
   ABC, Abc, RuAbc, RuABC,
 } from './state';
-import textValue from './textValue';
-// import { monic } from './monic';
 
 const { body } = document;
 let language = Abc;
-
+let output = '';
+let text: string[] = [];
+const outputTextarea = (t:string[]) => t.filter((x) => x.length === 1 || x === '\u000A'
+|| x === '<br>' || x === '\u00A0\u00A0\u00A0\u00A0').join('');
 export const virtualKeyboard = () => {
-  const currentLanguage = localStorage.getItem('language') || 'en';
   const currentCase = localStorage.getItem('case');
-
+  const currentLanguage = localStorage.getItem('language') || 'en';
   if (currentLanguage === 'en') {
     language = (currentCase === 'lowerCase' || currentCase === null ? Abc : ABC);
   }
-
   if (currentLanguage === 'ru') {
     language = (currentCase === 'lowerCase' || currentCase === null ? RuAbc : RuABC);
   }
@@ -46,65 +45,126 @@ export const virtualKeyboard = () => {
   body.append(keyBoard);
   const capsLock = document.querySelector('.caps_lock');
   if (currentCase === 'upperCase') capsLock?.classList.toggle('active');
-  // textValue();
 };
 
-// body.addEventListener('keydown', (e) => {
-//   const currentCase = localStorage.getItem('case');
-//   const currentLanguage = localStorage.getItem('language') || 'en';
-//   console.log(e.code);
-//   if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-//     const togleLang = currentLanguage === 'en' ? 'ru' : 'en';
-//     body.addEventListener('keydown', (ev) => {
-//       if (ev.code === 'AltLeft' || ev.code === 'AltRight') {
-//         localStorage.setItem('language', togleLang);
-//         body.childNodes[2].remove();
-//         virtualKeyboard();
-//       }
-//       ev.preventDefault();
-//     });
-//   }
+body.addEventListener('keydown', (e) => {
+  const textArea = document.querySelector('.text');
+  const newText = () => {
+    text = output.split('');
+    textArea!.innerHTML = output;
+  };
+  const brText = () => {
+    if (text.length === 106 || (text.length - 106) % 110 === 0) {
+      text.push('<br>');
+      output = outputTextarea(text);
+      newText();
+    }
+  };
 
-//   if (e.code === 'CapsLock') {
-//     const togleCase = currentCase === 'lowerCase'
-// || currentCase === null ? 'upperCase' : 'lowerCase';
-//     localStorage.setItem('case', togleCase);
-//     body.childNodes[2].remove();
-//     virtualKeyboard();
-//     e.preventDefault();
-//   }
-// });
-// const text: string[] = [];
-// let output = '';
-// const outputTextarea = (t:string[]) => t.filter((e) => e.length === 1).join('');
-// body.addEventListener('keydown', (e) => {
-//   text.push(e.key);
-//   if (e.code === 'Backspace') {
-//     text.pop();
-//   }
-//   if (e.code === 'Enter') {
-//     text.push('/n');
-//   }
-//   const textArea = document.querySelector('.text');
-//   output = outputTextarea(text);
-//   textArea!.innerHTML = output;
-// });
-// body.addEventListener('keydown', (e) => {
-// const currentLanguage = localStorage.getItem('language') || 'en';
-// if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-//   const togleLang = currentLanguage === 'en' ? 'ru' : 'en';
-//   body.addEventListener('keydown', (ev) => {
-//     if (ev.code === 'AltLeft' || ev.code === 'AltRight') {
-//       localStorage.setItem('language', togleLang);
-//     }
-//     body.childNodes[2].remove();
-//     virtualKeyboard();
-//   });
-// }
-// });
+  if (e.code === 'Backspace' && output.length > 0) {
+    if (output.slice(-1) === '>') {
+      output = outputTextarea(text).slice(0, -3);
+      newText();
+    }
+    output = outputTextarea(text).slice(0, -1);
+    newText();
+  }
+  if (e.code !== 'Backspace' && e.code !== 'Space' && e.code !== 'Enter'
+   && e.code !== 'Tab') {
+    text.push(e.key);
+    output = outputTextarea(text);
+    newText();
+    brText();
+  }
+  if (e.code === 'Tab') {
+    text.push('\u00A0\u00A0\u00A0\u00A0');
+    output = outputTextarea(text);
+    newText();
+  }
+  if (e.code === 'Enter') {
+    text.push('<br>');
+    output = outputTextarea(text);
+    newText();
+  }
+  if (e.code === 'Space') {
+    text.push('\u00A0');
+    output = outputTextarea(text);
+    newText();
+  }
+  const currentLanguage = localStorage.getItem('language') || 'en';
+  if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+    body.addEventListener('keyup', (event) => {
+      const togleLang = currentLanguage === 'en' ? 'ru' : 'en';
+      if (event.code === 'AltLeft' || event.code === 'AltRight') {
+        localStorage.setItem('language', togleLang);
+        body.childNodes[2].remove();
+        virtualKeyboard();
+      }
+    });
+  }
 
-// console.log(capsLock);
-// capsLock?.addEventListener('click', () => {
-//   capsLock.classList.toggle('active');
-//   language = RuABC;
-// });
+  if (e.code === 'CapsLock') {
+    const currentCase = localStorage.getItem('case') || 'lowerCase';
+    const togleCase = currentCase === 'lowerCase' ? 'upperCase' : 'lowerCase';
+    localStorage.setItem('case', togleCase);
+    body.childNodes[2].remove();
+    virtualKeyboard();
+  }
+});
+
+body.addEventListener('click', (e: MouseEvent) => {
+  const code = (e.target as HTMLElement);
+  if (code.classList[0] === 'button') {
+    console.log(code.innerHTML);
+    if (code.innerHTML === 'Caps Lock') {
+      const currentCase = localStorage.getItem('case') || 'lowerCase';
+      const togleCase = currentCase === 'lowerCase' ? 'upperCase' : 'lowerCase';
+      localStorage.setItem('case', togleCase);
+      body.childNodes[2].remove();
+      virtualKeyboard();
+    }
+    const textArea = document.querySelector('.text');
+    const newText = () => {
+      text = output.split('');
+      textArea!.innerHTML = output;
+    };
+    const brText = () => {
+      if (text.length === 106 || (text.length - 106) % 110 === 0) {
+        text.push('<br>');
+        output = outputTextarea(text);
+        newText();
+      }
+    };
+
+    if (code.innerHTML === 'Backspace' && output.length > 0) {
+      if (output.slice(-1) === '>') {
+        output = outputTextarea(text).slice(0, -3);
+        newText();
+      }
+      output = outputTextarea(text).slice(0, -1);
+      newText();
+    }
+    if (code.innerHTML !== 'Backspace' && code.innerHTML !== 'Space' && code.innerHTML !== 'Enter'
+     && code.innerHTML !== 'Tab') {
+      text.push(code.innerHTML);
+      output = outputTextarea(text);
+      newText();
+      brText();
+    }
+    if (code.innerHTML === 'Tab') {
+      text.push('\u00A0\u00A0\u00A0\u00A0');
+      output = outputTextarea(text);
+      newText();
+    }
+    if (code.innerHTML === 'Enter') {
+      text.push('<br>');
+      output = outputTextarea(text);
+      newText();
+    }
+    if (code.innerHTML === 'Space') {
+      text.push('\u00A0');
+      output = outputTextarea(text);
+      newText();
+    }
+  }
+});
